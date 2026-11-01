@@ -19,4 +19,12 @@ Validation date: 2026-11-01 (Asia/Singapore).
 
 The visual approximation boundaries are documented in `source-study.md`. The rendering tests establish successful output and preview behavior; they do not imply pixel-perfect identity. npm's scaffold/toolchain audit reported upstream transitive advisories; no forced dependency downgrade was applied, and a zero-advisory audit is not claimed.
 
-Repository publication, fresh-clone checks, and recording binding are recorded below after the corresponding remote operations complete.
+## Public repository and reproducibility
+
+- Repository: https://github.com/chokwinlee/motionface-sandy-recreation ; default branch `main`.
+- GitHub returned `visibility: PUBLIC` and `isPrivate: false`. An unauthenticated GitHub REST request independently returned HTTP 200 with `private: false`.
+- The complete implementation was pushed as commit `d0c8a7f0fe6e8aa510eed000445b247279b213db`; `git ls-remote` matched the local source commit. The final delivery includes this verification-document update as a later commit with unchanged component code and media assets.
+- A new clone from the public remote passed `npm ci`, `npm run check`, `npm run build`, and a frame-596 render. The freshly rendered PNG and the original working-copy render had the identical SHA-256 digest `db4fd3f0cd1fb01d9cc8a49764731e8dad86cae00d3a95eef378dff6084eb2e3`.
+- The tracked-file and commit-history credential scans passed. The root README, exact dependency lockfile, all components, assets, font license, reference study, and verification scripts are committed.
+
+The recording/repository binding is an operational REST request performed after publication using the supplied, recording-scoped credential. It is intentionally separate from this renderable source tree, and its sanitized response is delivered in the task result. The anonymous Motionface page requires sign-in to inspect detailed repository lists; no additional website login or deletion of existing bindings was performed.
