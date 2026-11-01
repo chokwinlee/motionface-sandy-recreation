@@ -1,15 +1,21 @@
 {
   "name": "motionface-sandy-recreation",
   "version": "1.0.0",
-  "description": "My Remotion video",
-  "repository": {},
+  "description": "Frame-driven Remotion recreation of Sandy Design Studio’s kinetic brand reel, Motionface recording 0b66f6e0-a1a5-457c-a4b2-d903a75df7f5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chokwinlee/motionface-sandy-recreation.git"
+  },
   "license": "UNLICENSED",
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24"
   },
   "private": true,
   "dependencies": {
+    "@fontsource/inter-tight": "5.2.7",
     "@remotion/cli": "4.0.539",
+    "@remotion/fonts": "4.0.539",
+    "@remotion/media": "4.0.539",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "remotion": "4.0.539"
@@ -24,9 +30,13 @@
   },
   "scripts": {
     "dev": "remotion studio",
+    "start": "remotion studio",
+    "check": "eslint src && tsc",
     "build": "remotion bundle",
-    "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "render": "remotion render SandyRecreation out/sandy-recreation.mp4",
+    "render:hd": "remotion render SandyRecreationHD out/sandy-recreation-1080p.mp4",
+    "poster": "remotion still SandyRecreation out/poster.png --frame=596",
+    "verify:render": "node scripts/verify-render.mjs"
   },
   "allowScripts": {
     "esbuild": false

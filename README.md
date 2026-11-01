@@ -1,54 +1,60 @@
-# Remotion video
+# Sandy Design Studio — Remotion recreation
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+A component-based reconstruction of **“by sandydesignstudio”**, Motionface recording [`0b66f6e0-a1a5-457c-a4b2-d903a75df7f5`](https://motionface.cc/?recording=0b66f6e0-a1a5-457c-a4b2-d903a75df7f5).
 
-Welcome to your Remotion project!
+The sequence recreates the blue light field, kinetic copy, changing design-tool icons, accelerating service wheel, perspective portfolio carousel, and three-circle SDS finale. Animations are deterministic React/SVG/CSS transforms driven by Remotion's frame number. There is no reference-video playback layer.
 
-## Commands
+![Recreated closing lockup](docs/preview.png)
 
-**Install Dependencies**
+## Run
 
-```console
-npm i --loglevel=error
-```
+Node.js 22.13+ is recommended. From a fresh clone:
 
-**Start Preview**
-
-```console
+```sh
+npm ci
 npm run dev
 ```
 
-**Render video**
+Select **SandyRecreation** in Remotion Studio. Scrub or play the entire timeline. Fonts, artwork, and audio are bundled locally; rendering requires no account, token, or remote media URL. Remotion may download its rendering browser on the first render.
 
-```console
-npx remotion render
+## Render
+
+```sh
+# Original reference dimensions: 736 × 414, 30 fps, 629 frames
+npm run render
+
+# 1920 × 1080 export with the same layout and timing
+npm run render:hd
+
+# Closing lockup still
+npm run poster
+
+# TypeScript / ESLint, bundle, and output metadata validation
+npm run check
+npm run build
+npm run verify:render
 ```
 
-**Upgrade Remotion**
+Outputs are written to `out/`, which is ignored by Git. `npm run render -- --concurrency=2` reduces memory use. HD uses the same reference-derived raster artwork with sharper vector text and shapes; it does not invent higher-resolution source footage.
 
-```console
-npx remotion upgrade
-```
+## Source map
 
-## Docs
+| File | Responsibility |
+| --- | --- |
+| `src/Root.tsx` | Original-size and HD compositions |
+| `src/timing.ts` | Metadata, scene boundaries, clamped frame interpolation |
+| `src/components/KineticType.tsx` | Copy, word reveals, icon choreography |
+| `src/components/ToolIcon.tsx` | Sixteen editable SVG design-tool glyphs |
+| `src/components/ServiceWheel.tsx` | Curved, accelerating typographic wheel |
+| `src/components/PortfolioCarousel.tsx` | Individually transformed 3D artwork cards |
+| `src/components/LogoFinale.tsx` | Measured circle trajectories and SDS reveal |
+| `public/` | Local artwork, soundtrack, and OFL fonts |
+| `docs/source-study.md` | Reference measurements, decisions, fidelity limits |
+| `docs/verification.md` | Actual validation results |
+| `scripts/prepare-assets.py` | Optional extraction tool for a separately supplied local reference |
 
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
+## Attribution and fidelity
 
-## Help
+The original creative work, brand identity, portfolio imagery, and soundtrack are credited to **Sandy Design Studio**. The small card textures, static background, soundtrack, and redrawn SDS wordmark derive from the user-supplied reference. The repository reconstructs the motion in editable components; card interiors use sampled artwork rather than reproducing all the films playing inside the original cards. Inter Tight is bundled under its SIL Open Font License in `public/fonts/OFL.txt`. The reference font was visually approximated with Inter Tight.
 
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+This repository does not grant rights to third-party branding, imagery, or music. No blanket license is applied to the original creative assets. The private reference download URL, the full reference video, and repository-binding credentials are not included.
